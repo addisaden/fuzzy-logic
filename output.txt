@@ -1,0 +1,80 @@
+--- Testing 0 °C
+Is the weather warm?	0.00
+Is the weather cold?	1.00
+Is the weather mid?	0.00
+Is the weather cool?	0.00
+--- Testing 2 °C
+Is the weather warm?	0.00
+Is the weather cold?	0.87
+Is the weather mid?	0.13
+Is the weather cool?	0.46
+--- Testing 4 °C
+Is the weather warm?	0.00
+Is the weather cold?	0.73
+Is the weather mid?	0.27
+Is the weather cool?	0.78
+--- Testing 6 °C
+Is the weather warm?	0.00
+Is the weather cold?	0.60
+Is the weather mid?	0.40
+Is the weather cool?	0.96
+--- Testing 8 °C
+Is the weather warm?	0.00
+Is the weather cold?	0.47
+Is the weather mid?	0.53
+Is the weather cool?	1.00
+--- Testing 10 °C
+Is the weather warm?	0.00
+Is the weather cold?	0.33
+Is the weather mid?	0.67
+Is the weather cool?	0.89
+--- Testing 12 °C
+Is the weather warm?	0.00
+Is the weather cold?	0.20
+Is the weather mid?	0.80
+Is the weather cool?	0.64
+--- Testing 14 °C
+Is the weather warm?	0.00
+Is the weather cold?	0.07
+Is the weather mid?	0.93
+Is the weather cool?	0.25
+--- Testing 16 °C
+Is the weather warm?	0.08
+Is the weather cold?	0.00
+Is the weather mid?	0.92
+Is the weather cool?	0.00
+--- Testing 18 °C
+Is the weather warm?	0.23
+Is the weather cold?	0.00
+Is the weather mid?	0.77
+Is the weather cool?	0.00
+--- Testing 20 °C
+Is the weather warm?	0.38
+Is the weather cold?	0.00
+Is the weather mid?	0.62
+Is the weather cool?	0.00
+--- Testing 22 °C
+Is the weather warm?	0.54
+Is the weather cold?	0.00
+Is the weather mid?	0.46
+Is the weather cool?	0.00
+--- Testing 24 °C
+Is the weather warm?	0.69
+Is the weather cold?	0.00
+Is the weather mid?	0.31
+Is the weather cool?	0.00
+--- Testing 26 °C
+Is the weather warm?	0.85
+Is the weather cold?	0.00
+Is the weather mid?	0.15
+Is the weather cool?	0.00
+--- Testing 28 °C
+Is the weather warm?	1.00
+Is the weather cold?	0.00
+Is the weather mid?	0.00
+Is the weather cool?	0.00
+--- Testing 30 °C
+Is the weather warm?	1.00
+Is the weather cold?	0.00
+Is the weather mid?	0.00
+Is the weather cool?	0.00
