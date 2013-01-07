@@ -3,78 +3,126 @@ Is the weather warm?	0.00
 Is the weather cold?	1.00
 Is the weather mid?	0.00
 Is the weather cool?	0.00
+
+On 0 °C the weather is cold!
+
 --- Testing 2 °C
 Is the weather warm?	0.00
 Is the weather cold?	0.87
 Is the weather mid?	0.13
 Is the weather cool?	0.46
+
+On 2 °C the weather is cold!
+
 --- Testing 4 °C
 Is the weather warm?	0.00
 Is the weather cold?	0.73
 Is the weather mid?	0.27
 Is the weather cool?	0.78
+
+On 4 °C the weather is cool!
+
 --- Testing 6 °C
 Is the weather warm?	0.00
 Is the weather cold?	0.60
 Is the weather mid?	0.40
 Is the weather cool?	0.96
+
+On 6 °C the weather is cool!
+
 --- Testing 8 °C
 Is the weather warm?	0.00
 Is the weather cold?	0.47
 Is the weather mid?	0.53
 Is the weather cool?	1.00
+
+On 8 °C the weather is cool!
+
 --- Testing 10 °C
 Is the weather warm?	0.00
 Is the weather cold?	0.33
 Is the weather mid?	0.67
 Is the weather cool?	0.89
+
+On 10 °C the weather is cool!
+
 --- Testing 12 °C
 Is the weather warm?	0.00
 Is the weather cold?	0.20
 Is the weather mid?	0.80
 Is the weather cool?	0.64
+
+On 12 °C the weather is mid!
+
 --- Testing 14 °C
 Is the weather warm?	0.00
 Is the weather cold?	0.07
 Is the weather mid?	0.93
 Is the weather cool?	0.25
+
+On 14 °C the weather is mid!
+
 --- Testing 16 °C
 Is the weather warm?	0.08
 Is the weather cold?	0.00
 Is the weather mid?	0.92
 Is the weather cool?	0.00
+
+On 16 °C the weather is mid!
+
 --- Testing 18 °C
 Is the weather warm?	0.23
 Is the weather cold?	0.00
 Is the weather mid?	0.77
 Is the weather cool?	0.00
+
+On 18 °C the weather is mid!
+
 --- Testing 20 °C
 Is the weather warm?	0.38
 Is the weather cold?	0.00
 Is the weather mid?	0.62
 Is the weather cool?	0.00
+
+On 20 °C the weather is mid!
+
 --- Testing 22 °C
 Is the weather warm?	0.54
 Is the weather cold?	0.00
 Is the weather mid?	0.46
 Is the weather cool?	0.00
+
+On 22 °C the weather is warm!
+
 --- Testing 24 °C
 Is the weather warm?	0.69
 Is the weather cold?	0.00
 Is the weather mid?	0.31
 Is the weather cool?	0.00
+
+On 24 °C the weather is warm!
+
 --- Testing 26 °C
 Is the weather warm?	0.85
 Is the weather cold?	0.00
 Is the weather mid?	0.15
 Is the weather cool?	0.00
+
+On 26 °C the weather is warm!
+
 --- Testing 28 °C
 Is the weather warm?	1.00
 Is the weather cold?	0.00
 Is the weather mid?	0.00
 Is the weather cool?	0.00
+
+On 28 °C the weather is warm!
+
 --- Testing 30 °C
 Is the weather warm?	1.00
 Is the weather cold?	0.00
 Is the weather mid?	0.00
 Is the weather cool?	0.00
+
+On 30 °C the weather is warm!
+
