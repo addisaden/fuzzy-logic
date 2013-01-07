@@ -34,7 +34,16 @@ temp[:cool] = Proc.new { |n|
 (0..30).to_a.each { |inp|
   next if inp % 2 == 1
   puts "--- Testing #{ inp } °C"
+
+  tp = nil
+
   temp.each { |n,f|
+    tp ||= [n, f.call(inp)]
+    if f.call(inp) > tp.last then
+      tp = [n, f.call(inp)]
+    end
     puts "Is the weather #{ n }?\t%.2f" % f.call(inp)
   }
+
+  puts "\nOn #{inp} °C the weather is #{ tp.first }!\n\n"
 }
