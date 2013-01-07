@@ -26,10 +26,15 @@ temp[:mid] = Proc.new { |n|
   [(1 - temp[:cold].call(n)),(1 - temp[:warm].call(n))].min
 }
 
+temp[:cool] = Proc.new { |n|
+  temp[:mid].call(n)*temp[:cold].call(n)*4
+}
 
-[0,1,14,15,16,20,27,30].each { |inp|
-puts "--- Testing #{ inp } °C"
+
+(0..30).to_a.each { |inp|
+  next if inp % 2 == 1
+  puts "--- Testing #{ inp } °C"
   temp.each { |n,f|
-    puts "Is the weather #{ n }? #{ f.call(inp) }"
+    puts "Is the weather #{ n }?\t%.2f" % f.call(inp)
   }
 }
