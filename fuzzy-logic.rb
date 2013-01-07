@@ -1,5 +1,16 @@
 # encoding: utf-8
 
+=begin
+
+  Build a Fuzzy-Set-Generator with a list as arguments ...
+
+  temp[:warm] = fuzzy_set_generator( [28,1], [15,0] )
+  temp[:cold] = fuzzy_set_generator( [0, 1], [15,0] )
+
+  temp[:mid] = fuzzy_set_and(fuzzy_set_complement(temp[:warm]), fuzzy_set_complement(temp[:cold]))
+
+=end
+
 temp = {}
 
 temp[:warm] = Proc.new { |n|
