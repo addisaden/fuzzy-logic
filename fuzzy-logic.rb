@@ -29,6 +29,27 @@ o - .8-.6
 
 =end
 
+module FuzzyLogic
+  module Set
+    module Generate
+      def self.gauss
+      end
+
+      def self.triangle
+      end
+
+      def self.trapezoid
+      end
+
+      def self.singleton
+      end
+
+      def self.list
+      end
+    end
+  end
+end
+
 temp = {}
 
 temp[:warm] = Proc.new { |n|
