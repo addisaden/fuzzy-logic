@@ -30,22 +30,23 @@ o - .8-.6
 =end
 
 module FuzzyLogic
-  module Set
-    module Generate
-      def self.gauss
-      end
+  class Set
+  end
 
-      def self.triangle
-      end
+  module Generate
+    def self.gauss
+    end
 
-      def self.trapezoid
-      end
+    def self.triangle
+    end
 
-      def self.singleton
-      end
+    def self.trapezoid
+    end
 
-      def self.list
-      end
+    def self.singleton
+    end
+
+    def self.list
     end
   end
 end
