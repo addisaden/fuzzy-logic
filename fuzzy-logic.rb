@@ -2,7 +2,7 @@
 
 =begin
 
-  Build a Fuzzy-Set-Generator with a list as arguments ...
+  TODO: Build a Fuzzy-Set-Generator with a list as arguments ...
 
   temp[:warm] = fuzzy_set_generator( [28,1], [15,0] )
   temp[:cold] = fuzzy_set_generator( [0, 1], [15,0] )
