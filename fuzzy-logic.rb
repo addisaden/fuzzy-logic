@@ -33,8 +33,9 @@ module FuzzyLogic
   class Set
     attr_reader :height
 
-    def initialize(&fuzzyproc)
+    def initialize(height=nil, &fuzzyproc)
       @fuzzyproc = fuzzyproc
+      @height = height
     end
 
     def get(value, alphacut=nil)
@@ -59,7 +60,16 @@ module FuzzyLogic
     def self.gauss
     end
 
-    def self.triangle
+    def self.triangle(center, range)
+      return Set.new(1) { |n|
+        o = 0.0
+	if n == center then
+	  o = 1.0
+	elsif n >= (center-range/2.0) and n <= (center+range/2.0) then
+	  o = 1.0 - [1.0, (n - center).abs.to_f/(range/2.0)].min
+	end
+	o
+      }
     end
 
     def self.trapezoid
