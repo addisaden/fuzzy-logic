@@ -31,19 +31,23 @@ o - .8-.6
 
 module FuzzyLogic
   class Set
-    attr_accessor :height, :range
+    attr_accessor :height
 
     def initialize(&fuzzyproc)
       @fuzzyproc = fuzzyproc
     end
 
     def get(value, alphacut=nil)
+      raise ArgumentError, "Value of fuzzy-set should be Comparable" unless value.is_a? Comparable
       out = @fuzzyproc.call(value)
+
+      raise TypeError, "output of fuzzy-set should be Comparable" unless out.is_a? Comparable
 
       @height ||= out
       @height = out if out > @height
 
       if alphacut then
+        raise ArgumentError, "Alphacut of fuzzy-set should be Comparable" unless alphacut.is_a? Comparable
       	out = 0 if alphacut > out
       end
 
