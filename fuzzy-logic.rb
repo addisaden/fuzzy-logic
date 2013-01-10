@@ -31,6 +31,24 @@ o - .8-.6
 
 module FuzzyLogic
   class Set
+    attr_accessor :height, :range
+
+    def initialize(&fuzzyproc)
+      @fuzzyproc = fuzzyproc
+    end
+
+    def get(value, alphacut=nil)
+      out = @fuzzyproc.call(value)
+
+      @height ||= out
+      @height = out if out > @height
+
+      if alphacut then
+      	out = 0 if alphacut > out
+      end
+
+      return out
+    end
   end
 
   module Generate
