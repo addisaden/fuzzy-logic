@@ -73,7 +73,19 @@ module FuzzyLogic
       }
     end
 
-    def self.trapezoid
+    def self.trapezoid(supmin, cormin, cormax, supmax)
+      supmin, cormin, cormax, supmax = *([supmin, cormin, cormax, supmax].sort.map(&:to_f))
+      return Set.new(1) { |n|
+        o = 0.0
+	if n.between?(cormin,cormax) then
+	  o = 1.0
+	elsif n.between?(supmin,cormin) then
+	  o = 1 - (cormin - n)/(cormin - supmin)
+	elsif n.between?(cormax,supmax) then
+	  o = 1 - (n - cormax)/(supmax - cormax)
+	end
+	o
+      }
     end
 
     def self.singleton
