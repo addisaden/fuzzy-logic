@@ -31,7 +31,7 @@ o - .8-.6
 
 module FuzzyLogic
   class Set
-    attr_accessor :height
+    attr_reader :height
 
     def initialize(&fuzzyproc)
       @fuzzyproc = fuzzyproc
