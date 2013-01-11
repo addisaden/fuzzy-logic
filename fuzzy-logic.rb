@@ -64,11 +64,11 @@ module FuzzyLogic
       range = range.abs
       return Set.new(1) { |n|
         o = 0.0
-	      if n == center then
-	        o = 1.0
-	      elsif n.between?((center-range/2.0), (center+range/2.0)) then
-	        o = 1.0 - [1.0, (n - center).abs.to_f/(range/2.0)].min
-	      end
+        if n == center then
+          o = 1.0
+        elsif n.between?((center-range/2.0), (center+range/2.0)) then
+          o = 1.0 - [1.0, (n - center).abs.to_f/(range/2.0)].min
+        end
 	      o
       }
     end
