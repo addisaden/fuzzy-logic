@@ -64,12 +64,12 @@ module FuzzyLogic
       range = range.abs
       return Set.new(1) { |n|
         o = 0.0
-	if n == center then
-	  o = 1.0
-	elsif n.between?((center-range/2.0), (center+range/2.0)) then
-	  o = 1.0 - [1.0, (n - center).abs.to_f/(range/2.0)].min
-	end
-	o
+	      if n == center then
+	        o = 1.0
+	      elsif n.between?((center-range/2.0), (center+range/2.0)) then
+	        o = 1.0 - [1.0, (n - center).abs.to_f/(range/2.0)].min
+	      end
+	      o
       }
     end
 
@@ -77,14 +77,14 @@ module FuzzyLogic
       supmin, cormin, cormax, supmax = *([supmin, cormin, cormax, supmax].sort.map(&:to_f))
       return Set.new(1) { |n|
         o = 0.0
-	if n.between?(cormin,cormax) then
-	  o = 1.0
-	elsif n.between?(supmin,cormin) then
-	  o = 1 - (cormin - n)/(cormin - supmin)
-	elsif n.between?(cormax,supmax) then
-	  o = 1 - (n - cormax)/(supmax - cormax)
-	end
-	o
+        if n.between?(cormin,cormax) then
+          o = 1.0
+        elsif n.between?(supmin,cormin) then
+          o = 1 - (cormin - n)/(cormin - supmin)
+        elsif n.between?(cormax,supmax) then
+          o = 1 - (n - cormax)/(supmax - cormax)
+        end
+        o
       }
     end
 
