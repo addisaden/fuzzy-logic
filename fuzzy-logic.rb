@@ -92,6 +92,18 @@ module FuzzyLogic
       raise ArgumentError, "Arguments of a singleton fuzzy-set should be Arrays of length 2" unless args.select { |arg|
         (not arg.is_a? Array) or (not arg.length == 2)
       }.empty?
+      args = args.sort { |a,b| a.first <=> b.first }
+      max = args.collect { |a| a.last } .sort.last
+      return Set.new(max) { |n|
+        o = 0.0
+        args.each { |a|
+          if n == a.first then
+            o = a.last.to_f
+            break
+          end
+        }
+        o
+      }
     end
 
     def self.list
