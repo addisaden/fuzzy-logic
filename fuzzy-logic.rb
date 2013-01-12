@@ -126,4 +126,12 @@ module FuzzyLogic
       }.empty?
     end
   end
+
+  class Collection
+    def initialize(name, &test)
+      @name = name
+      # a test for inputvariables (returns true/false)
+      @test = test
+    end
+  end
 end
