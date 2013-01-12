@@ -89,9 +89,7 @@ module FuzzyLogic
     end
 
     def self.singleton(*args)
-      raise ArgumentError, "Arguments of a singleton fuzzy-set should be Arrays of length 2" unless args.select { |arg|
-        (not arg.is_a? Array) or (not arg.length == 2)
-      }.empty?
+      args_test_array_filled_with_arrays_length(args, "Arguments of a singleton fuzzy-set should be Arrays of length 2", 2)
       args = args.sort { |a,b| a.first <=> b.first }
       max = args.collect { |a| a.last } .sort.last
       return Set.new(max) { |n|
@@ -106,7 +104,16 @@ module FuzzyLogic
       }
     end
 
-    def self.list
+    def self.list(*args)
+      args_test_array_filled_with_arrays_length(args, "Arguments of a list fuzzy-set should be Arrays of length 2", 2)
+    end
+
+    private
+
+    def self.args_test_array_filled_with_arrays_length(args, msg, len)
+      raise ArgumentError, msg unless args.select { |arg|
+        (not arg.is_a? Array) or (not arg.length == len)
+      }.empty?
     end
   end
 end
