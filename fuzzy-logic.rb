@@ -58,6 +58,14 @@ module FuzzyLogic
 
   module Generate
     def self.gauss
+      #
+      # Gauss would be calculated with this expression:
+      #
+      # Math.exp(
+      #   -( (n - center)/diffusion )**2
+      # )
+      #
+      # Problem: On an overange feedback are big numbers instead of zero
     end
 
     def self.triangle(center, range)
