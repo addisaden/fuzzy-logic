@@ -89,7 +89,9 @@ module FuzzyLogic
     end
 
     def self.singleton(*args)
-      raise ArgumentError, "Arguments of a singleton fuzzy-set should be Arrays" unless args.select { |arg| not arg.is_a? Array } .empty?
+      raise ArgumentError, "Arguments of a singleton fuzzy-set should be Arrays of length 2" unless args.select { |arg|
+        (not arg.is_a? Array) or (not arg.length == 2)
+      }.empty?
     end
 
     def self.list
