@@ -11,4 +11,12 @@ temp = FuzzyLogic::Collection.new("Temperatur") { |grad|
 }
 
 temp[:cold] = FuzzyLogic::Generate.trapezoid(-101,-100,5, 13)
-temp[:warm] = FuzzyLogic::Generate.trapezoid(13,22,100,101)
+temp[:hot] = FuzzyLogic::Generate.trapezoid(21,30,100,101)
+temp[:warm] = FuzzyLogic::Generate.triangle(20, 11)
+temp[:cool] = FuzzyLogic::Generate.triangle(10,11)
+
+(0..30).to_a.each { |x|
+  puts "#{ x } °C"
+  puts temp.get(x).inspect
+  puts
+}
