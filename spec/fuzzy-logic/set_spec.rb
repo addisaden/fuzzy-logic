@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require_relative "load_fuzzy_logic.rb"
+require_relative "spec_helper.rb"
 require "minitest/autorun"
 
 describe FuzzyLogic::Set do
