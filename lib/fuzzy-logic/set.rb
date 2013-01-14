@@ -21,7 +21,7 @@ module FuzzyLogic
       @height = out if out > @height
 
       if alphacut then
-        raise ArgumentError, "Alphacut of fuzzy-set should be Comparable" unless alphacut.is_a? Comparable
+        raise ArgumentError, "Alphacut of fuzzy-set should be Comparable" unless alphacut.is_a? Numeric
       	out = 0 if alphacut > out
       end
 
