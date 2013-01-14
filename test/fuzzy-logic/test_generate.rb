@@ -50,16 +50,16 @@ describe FuzzyLogic::Generate do
 
     it "should have also some values near one" do
       @trapezoid.get(19.9).must_be :<, 1
-      @trapezoid.get(19.9).must_be :>, 0.8
+      @trapezoid.get(19.9).must_be :>, 0.9
       @trapezoid.get(30.1).must_be :<, 1
-      @trapezoid.get(30.1).must_be :>, 0.8
+      @trapezoid.get(30.1).must_be :>, 0.9
     end
 
     it "should have also some values near zero" do
       @trapezoid.get(10.1).must_be :>, 0
-      @trapezoid.get(10.1).must_be :<, 0.2
+      @trapezoid.get(10.1).must_be :<, 0.1
       @trapezoid.get(39.9).must_be :>, 0
-      @trapezoid.get(39.9).must_be :<, 0.2
+      @trapezoid.get(39.9).must_be :<, 0.1
     end
 
     it "should have a zone with 0" do
