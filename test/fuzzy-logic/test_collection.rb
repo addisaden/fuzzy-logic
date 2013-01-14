@@ -14,6 +14,14 @@ describe FuzzyLogic::Collection do
       end
       o
     }
+
+    @empty_collection = FuzzyLogic::Collection.new("Empty-Collection Test") { |t|
+      true
+    }
+
+    @wrong_test_collection = FuzzyLogic::Collection.new("Wrong-Proc-Test in Collection Test") { |n|
+      42
+    }
   end
 
   describe "can add a fuzzyset" do
