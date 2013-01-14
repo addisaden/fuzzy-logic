@@ -39,5 +39,11 @@ describe FuzzyLogic::Collection do
     it "should be empty on 0" do
       @collection.get(0).must_be_empty
     end
+
+    it "should raise an error with wrong arguments" do
+      lambda { @collection.get("Hallo") }.must_raise ArgumentError
+      lambda { @collection.get(-1) }.must_raise ArgumentError
+      lambda { @collection.get(100.01) }.must_raise ArgumentError
+    end
   end
 end
