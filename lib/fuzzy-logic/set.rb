@@ -15,7 +15,7 @@ module FuzzyLogic
       raise ArgumentError, "Value of fuzzy-set should be Comparable" unless value.is_a? Comparable
       out = @fuzzyproc.call(value)
 
-      raise TypeError, "output of fuzzy-set should be Comparable" unless out.is_a? Comparable
+      raise TypeError, "output of fuzzy-set should be Numeric" unless out.is_a? Numeric
 
       @height ||= out
       @height = out if out > @height
