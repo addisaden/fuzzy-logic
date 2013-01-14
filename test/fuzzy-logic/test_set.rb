@@ -1,50 +1,66 @@
 # encoding: utf-8
 
 require_relative "load_fuzzy_logic.rb"
-require 'test/unit'
+require "minitest/autorun"
 
-class TestFuzzyLogicSet < Test::Unit::TestCase
-  def setup
-    @a_set = FuzzyLogic::Set.new(1) { |n|
+describe FuzzyLogic::Set do
+  before do
+    @valid_set = FuzzyLogic::Set.new(1) { |n|
       o = 0.0
       o = 1.0 if n >= 30
-      o = 1 - (30.0 - n)/(30.0 - 20.0) if n >= 20 and n < 30
+      o = 1.0 - (30.0 - n)/(30.0 - 20.0) if n < 30 and n >= 20
       o
     }
-    @invalid_set = FuzzyLogic::Set.new { |n|
-      "Hallo Welt"
+
+    @invalid_set = FuzzyLogic::Set.new(1) { |n|
+      "i am invalid."
     }
-    @msg = "Test-Fuzzy-Set should be"
+
+    # Is christmas near?
+    @time_set = FuzzyLogic::Set.new(1) { |n|
+      t = Time.now
+      o = 0.0
+      if n.month == 12 and n.day <= 24 then
+        o = 1.0 if n.day >= 20
+        o = 1.0 - (24.0 - n.day)/(24.0 - 6.0) if n.day >= 6.0 and n.day < 20.0
+      end
+      o
+    }
   end
 
-  def test_ranges_of_fuzzyset
-    assert(@a_set.get(30) == 1, "#{ @msg } 1 with .get(35) as input")
-    assert(@a_set.get(0) == 0, "#{ @msg } 0 with .get(0) as input")
-    assert(@a_set.get(20) == 0, "#{ @msg } 0 with .get(20) as input")
+  describe "when get values from a valid set" do
+    it "should have a respond with 1" do
+      @valid_set.get(30.0).must_equal 1.0
+      @time_set.get(Time.new(2013,12,24)).must_equal 1.0
+      @time_set.get(Time.new(2013,12,20)).must_equal 1.0
+    end
 
-    bgr_than_zero = @a_set.get(20.1)
-    assert(bgr_than_zero > 0, "#{@msg } bigger than 0 with .get(20.1) as input")
-    assert(bgr_than_zero < 0.3, "#{ @msg} smaller than 0.3 with .get(20.1) as input")
+    it "should have a respond with 0" do
+      @valid_set.get(20).must_equal 0
+      @time_set.get(Time.new(2013,11)).must_equal 0
+      @time_set.get(Time.new(2013,12,6)).must_equal 0
+    end
 
-    sml_than_one = @a_set.get(29.9)
-    assert(sml_than_one < 1, "#{@msg } smaller than 1 with .get(29.9) as input")
-    assert(sml_than_one > 0.7, "#{@msg} bigger than 0.7 with .get(29.9) as input")
+    it "should have a respond near 0" do
+      [@valid_set.get(21), @time_set.get(Time.new(2013,12,7))].each { |t|
+        t.must_be :!=, 0
+        t.must_be :<, 0.3
+      }
+    end
+
+    it "should have a respond near 1" do
+      [@valid_set.get(29), @time_set.get(Time.new(2013,12,19))].each { |t|
+        t.must_be :!=, 1
+        t.must_be :>, 0.7
+      }
+    end
   end
 
-  def test_ranges_with_alphacut
-    assert(@a_set.get(20.1, 0.5) == 0, "#{@msg} be zero with alphacut")
-    assert(@a_set.get(26, 0.5) > 0 , "#{@msg} be bigger than zero with alphacut")
-  end
-
-  def test_invalid_values
-    assert_raises(ArgumentError) {
-      @a_set.get(Object.new)
-    }
-    assert_raises(TypeError) {
-      @invalid_set.get(3)
-    }
-    assert_raises(ArgumentError) {
-      @a_set.get(3, true)
-    }
+  describe "when give wrong arguments" do
+    it "should raise an ArgumentError" do
+      lambda { @valid_set.get(Object.new) }.must_raise ArgumentError
+      lambda { @valid_set.get(2, Object.new) }.must_raise ArgumentError
+      lambda { @invalid_set.get(3) }.must_raise TypeError
+    end
   end
 end
