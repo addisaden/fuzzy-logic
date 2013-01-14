@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require "./fuzzy-logic.rb"
+require_relative "../lib/fuzzy-logic.rb"
 
 temp = FuzzyLogic::Collection.new("Temperatur") { |grad|
   o = false
