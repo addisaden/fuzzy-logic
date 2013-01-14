@@ -60,6 +60,9 @@ describe FuzzyLogic::Set do
     it "should raise an ArgumentError" do
       lambda { @valid_set.get(Object.new) }.must_raise ArgumentError
       lambda { @valid_set.get(2, Object.new) }.must_raise ArgumentError
+    end
+
+    it "should raise an TypeError" do
       lambda { @invalid_set.get(3) }.must_raise TypeError
     end
   end
