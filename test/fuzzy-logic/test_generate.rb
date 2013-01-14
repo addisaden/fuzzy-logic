@@ -35,15 +35,38 @@ describe FuzzyLogic::Generate do
     end
 
     it "should have a zone with 0" do
-      @triangle.get(5).must_equal 0
-      @triangle.get(0).must_equal 0
-      @triangle.get(-15).must_equal 0
-      @triangle.get(15).must_equal 0
-      @triangle.get(20).must_equal 0
+      [5,0,-15,15,20].each { |t|
+        @triangle.get(t).must_equal 0
+      }
     end
   end
 
   describe "a trapezoid fuzzy-set" do
+    it "should have a zone with 1" do
+      [20,25,30].each { |t|
+        @trapezoid.get(t).must_equal 1
+      }
+    end
+
+    it "should have also some values near one" do
+      @trapezoid.get(19.9).must_be :<, 1
+      @trapezoid.get(19.9).must_be :>, 0.8
+      @trapezoid.get(30.1).must_be :<, 1
+      @trapezoid.get(30.1).must_be :>, 0.8
+    end
+
+    it "should have also some values near zero" do
+      @trapezoid.get(10.1).must_be :>, 0
+      @trapezoid.get(10.1).must_be :<, 0.2
+      @trapezoid.get(39.9).must_be :>, 0
+      @trapezoid.get(39.9).must_be :<, 0.2
+    end
+
+    it "should have a zone with 0" do
+      [0, 5, 10, 40, 41, 49, 50].each { |t|
+        @trapezoid.get(t).must_equal 0
+      }
+    end
   end
 
   describe "a list fuzzy-set" do
