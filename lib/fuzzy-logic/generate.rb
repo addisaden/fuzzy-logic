@@ -65,6 +65,26 @@ module FuzzyLogic
       args_test_array_filled_with_arrays_length(args, "Arguments of a list fuzzy-set should be Arrays of length 2", 2)
     end
 
+    def self.or(seta, setb, soft=false)
+      raise ArgumentError, "Arguments should be fuzzy-sets" unless seta.is_a? Set and setb.is_a? Set
+      
+      h1 = seta.height || 0
+      h2 = setb.height || 0
+      
+      hmax = [h1,h2].max
+      hmax = hmax > 0 ? hmax : nil
+
+      if soft then
+        return Set.new(hmax) { |n|
+          seta.get(n) + setb.get(n) - seta.get(n) * setb.get(n)
+        }
+      end
+
+      return Set.new(hmax) { |n|
+        [seta.get(n), setb.get(n)].max
+      }
+    end
+
     private
 
     def self.args_test_array_filled_with_arrays_length(args, msg, len)
