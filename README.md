@@ -1,12 +1,15 @@
-# .
+# Fuzzy-Logic
 
-TODO: Write a gem description
+Fuzzy logic is a mathematical concept of fuzzy logical sets.
+An element of a fuzzy-set belongs to it in a range between zero and one.
+
+read my [work](http://writedown.eu/wp-content/uploads/2013/01/fuzzy-logik_fuzzy-regeln.pdf) on this topic in german.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem '.'
+    gem 'fuzzy-logic'
 
 And then execute:
 
@@ -14,7 +17,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install .
+    $ gem install fuzzy-logic
 
 ## Usage
 
