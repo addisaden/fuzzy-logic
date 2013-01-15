@@ -6,6 +6,9 @@ An element of a fuzzy-set belongs to it in a range between zero and one.
 read my [work](http://writedown.eu/wp-content/uploads/2013/01/fuzzy-logik_fuzzy-regeln.pdf) on this topic in german.
 
 ## Bug
+
+This bug should be fixed in 0.0.3
+
     weather = FuzzyLogic::Collection.new("weather in °C") { |n| n.is_a? Numeric }
     weather[:cold] = FuzzyLogic::Set.new { |n|
         o = 0.0
@@ -95,7 +98,12 @@ The return is a normal Fuzzy-Set
     
     temp[:hot] = FuzzyLogic::Generate.trapezoid(25, 35, 100, 101)
     temp[:cold] = FuzzyLogic::Generate.trapezoid(-101, -100, 5, 15)
+    
+    # this doesnt work, because of a bug: fix in 0.0.3
     temp[:cool_to_warm] = FuzzyLogic::Generate.and( FuzzyLogic::Generate.not(temp[:hot]), FuzzyLogic::Generate.not(temp[:cold]))
+
+    # feature of 0.0.3
+    temp[:cool_to_warm_short_version] = temp[:hot].not.and( temp[:cold.not )
 
     temp.get(20)
     # => { :cool_to_warm => 1.0 }
