@@ -103,7 +103,7 @@ The return is a normal Fuzzy-Set
     temp[:cool_to_warm] = FuzzyLogic::Generate.and( FuzzyLogic::Generate.not(temp[:hot]), FuzzyLogic::Generate.not(temp[:cold]))
 
     # feature of 0.0.3
-    temp[:cool_to_warm_short_version] = temp[:hot].not.and( temp[:cold.not )
+    temp[:cool_to_warm_short_version] = temp[:hot].not.and temp[:cold].not
 
     temp.get(20)
     # => { :cool_to_warm => 1.0 }
