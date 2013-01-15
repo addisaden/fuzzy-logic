@@ -1,6 +1,4 @@
-source :rubygems
+source 'https://rubygems.org'
 
-group :development do
-  gem "guard-minitest"
-  gem "rb-inotify", "~> 0.8.8"
-end
+# Specify your gem's dependencies in ..gemspec
+gemspec

@@ -32,3 +32,7 @@ o - .8-.6
 require_relative "fuzzy-logic/set.rb"
 require_relative "fuzzy-logic/generate.rb"
 require_relative "fuzzy-logic/collection.rb"
+
+module FuzzyLogic
+  VERSION = "0.0.1"
+end
