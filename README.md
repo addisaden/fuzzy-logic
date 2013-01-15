@@ -43,6 +43,50 @@ Or install it yourself as:
     }
     
     its_near_christmas.get( Time.now )
+    
+    its_near_christmas.support( Time.new(2013, 12, 8) ) # => true
+    its_near_christmas.support( Time.new(2013, 12, 6) ) # => false
+    
+    tis_near_christmas.core( Time.new(2013, 12, 23) )   # => true
+    its_near_christmas.core( Time.new(2013, 12, 8) )    # => false
+
+### Use Fuzzy-Generators
+
+The return is a normal Fuzzy-Set
+
+    require 'fuzzy-logic'
+    
+    # generate a triangle
+    triangle = FuzzyLogic::Generate.triangle(10, 4) # range is (8..12) and mid is 10 (8 and 12 is zero)
+    
+    # generate a trapezoid
+    trapez   = FuzzyLogic::Generate.trapezoid(10, 20, 30, 40) # ~support(10..40) and core(20..30)
+    
+    # combinations
+    triangle_and_trapez = FuzzyLogic::Generate.and(triangle, trapez)
+    triangle_or_trapez  = FuzzyLogic::Generate.or( triangle, trapez)
+    not_in_trapez       = FuzzyLogic::Generate.not( trapez )
+
+### Use Fuzzy-Collection
+
+    require 'fuzzy-logic'
+    
+    temp = FuzzyLogic::Collection.new("temperature in °C") { |testvalue|
+      o = true
+      if not testvalue.is_a? Numeric then
+        o = false
+      elsif testvalue > 100 or testvalue < -100 then
+        o = false
+      end
+      o
+    }
+    
+    temp[:hot] = FuzzyLogic::Generate.trapezoid(25, 35, 100, 101)
+    temp[:cold] = FuzzyLogic::Generate.trapezoid(-101, -100, 5, 15)
+    temp[:cool_to_warm] = FuzzyLogic::Generate.and( FuzzyLogic::Generate.not(temp[:hot]), FuzzyLogic::Generate.not(temp[:cold]))
+
+    temp.get(20)
+    # => { :cool_to_warm => 1.0 }
 
 ## Contributing
 
