@@ -7,6 +7,10 @@ module FuzzyLogic
     attr_reader :height
 
     def initialize(height=nil, &fuzzyproc)
+      if height != nil then
+        raise ArgumentError, "Initial Height should be numeric" unless height.is_a? Numeric
+        raise ArgumentError, "Initial Height should be between 0 and 1" if height < 0 or height > 1
+      end
       @fuzzyproc = fuzzyproc
       @height = height
     end
@@ -15,7 +19,8 @@ module FuzzyLogic
       raise ArgumentError, "Value of fuzzy-set should be Comparable" unless value.is_a? Comparable
       out = @fuzzyproc.call(value)
 
-      raise TypeError, "output of fuzzy-set should be Numeric" unless out.is_a? Numeric
+      raise TypeError, "Output of fuzzy-set should be Numeric" unless out.is_a? Numeric
+      raise TypeError, "Output of fuzzy-set is out of range. Should be between 0 and 1" if out < 0 or out > 1
 
       @height ||= out
       @height = out if out > @height

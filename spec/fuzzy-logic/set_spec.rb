@@ -87,4 +87,28 @@ describe FuzzyLogic::Set do
       @temp_set.height.must_equal 1
     end
   end
+
+  describe "if output/height of a set is out of range" do
+    it "should raise an error on invlalid output" do
+      lambda {
+        FuzzyLogic::Set.new { |n|
+          5
+        }.get(1)
+      }.must_raise TypeError
+    end
+
+    it "should raise an ArgumentError on invalid initial height" do
+      lambda {
+        FuzzyLogic::Set.new(2) { |n|
+          true
+        }
+      }.must_raise ArgumentError
+
+      lambda {
+        FuzzyLogic::Set.new(:test) { |n|
+          true
+        }
+      }.must_raise ArgumentError
+    end
+  end
 end
