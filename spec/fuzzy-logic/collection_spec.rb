@@ -69,4 +69,10 @@ describe FuzzyLogic::Collection do
       @empty_collection.length.must_equal 0
     end
   end
+
+  describe "a collection with a wrong test" do
+    it "should give a TypeError on get" do
+      lambda { @wrong_test_collection.get(1) }.must_raise TypeError
+    end
+  end
 end

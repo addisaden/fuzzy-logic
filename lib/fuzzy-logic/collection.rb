@@ -21,6 +21,7 @@ module FuzzyLogic
     end
 
     def get(n, all=false)
+      raise TypeError, "Test of Fuzzy-Collection is not valid" unless [true, false].include? @test.call(n)
       raise ArgumentError, "Argument is not valid" unless @test.call(n)
       sets_output = {}
       @sets.each { |name, fset|
