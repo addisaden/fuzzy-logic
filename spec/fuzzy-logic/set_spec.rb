@@ -123,4 +123,16 @@ describe FuzzyLogic::Set do
       @valid_set.support(26, 0.5).must_equal true
     end
   end
+
+  describe "fuzzy-set .core" do
+    it "should give only on values equal to 1 a true value" do
+      @valid_set.core(30).must_equal true
+      @valid_set.core(29).must_equal false
+    end
+
+    it "shouldnt have a problem with an optional alphacut" do
+      @valid_set.core(30, 0.5).must_equal true
+      @valid_set.core(29, 0.5).must_equal false
+    end
+  end
 end
