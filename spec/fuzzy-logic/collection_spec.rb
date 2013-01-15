@@ -53,5 +53,20 @@ describe FuzzyLogic::Collection do
       lambda { @collection.get(-1) }.must_raise ArgumentError
       lambda { @collection.get(100.01) }.must_raise ArgumentError
     end
+
+    it "should have a .length of one" do
+      @collection.length.must_equal 1
+    end
+  end
+
+  describe "an empty collection" do
+    it "should give an empty Hash on .get" do
+      @empty_collection.get(1).must_be :is_a?, Hash
+      @empty_collection.get(1).must_be_empty
+    end
+
+    it "should give a .length of zero" do
+      @empty_collection.length.must_equal 0
+    end
   end
 end

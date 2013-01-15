@@ -10,10 +10,16 @@ module FuzzyLogic
       @test = test
       @sets = {}
     end
+
+    def length
+      @sets.count
+    end
+
     def []=(fuzzysetname, fuzzyset)
       raise ArgumentError, "Secound argument should be a Fuzzy-Set" unless fuzzyset.is_a?Set
       @sets[fuzzysetname.to_sym] = fuzzyset
     end
+
     def get(n, all=false)
       raise ArgumentError, "Argument is not valid" unless @test.call(n)
       sets_output = {}
