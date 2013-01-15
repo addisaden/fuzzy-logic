@@ -54,6 +54,11 @@ describe FuzzyLogic::Set do
         t.must_be :>, 0.7
       }
     end
+
+    it "should have a height of 1" do
+      @valid_set.height.must_equal 1
+      @time_set.height.must_equal 1
+    end
   end
 
   describe "when give wrong arguments" do
@@ -64,6 +69,22 @@ describe FuzzyLogic::Set do
 
     it "should raise an TypeError" do
       lambda { @invalid_set.get(3) }.must_raise TypeError
+    end
+  end
+
+  describe "should change height" do
+    before do
+      @temp_set = FuzzyLogic::Set.new(0) { |n|
+        o = 0.0
+        o = 1.0 if n > 10
+        o
+      }
+    end
+
+    it "should change the height from zero to one" do
+      @temp_set.height.must_equal 0
+      @temp_set.get(20)
+      @temp_set.height.must_equal 1
     end
   end
 end
