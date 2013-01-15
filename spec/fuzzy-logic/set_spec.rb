@@ -111,4 +111,16 @@ describe FuzzyLogic::Set do
       }.must_raise ArgumentError
     end
   end
+
+  describe "fuzzy-set .support" do
+    it "should give only on values above zero a true value, else false" do
+      @valid_set.support(21).must_equal true
+      @valid_set.support(20).must_equal false
+    end
+
+    it "should also deal with alphacut" do
+      @valid_set.support(21, 0.5).must_equal false
+      @valid_set.support(26, 0.5).must_equal true
+    end
+  end
 end

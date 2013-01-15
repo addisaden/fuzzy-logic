@@ -15,6 +15,10 @@ module FuzzyLogic
       @height = height
     end
 
+    def support(value, alphacut=nil)
+      get(value, alphacut) > 0
+    end
+
     def get(value, alphacut=nil)
       raise ArgumentError, "Value of fuzzy-set should be Comparable" unless value.is_a? Comparable
       out = @fuzzyproc.call(value)
