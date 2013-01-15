@@ -90,6 +90,11 @@ describe FuzzyLogic::Generate do
         lambda { FuzzyLogic::Generate.or(:test, @setb) }.must_raise ArgumentError
       end
 
+      it "should have a height of one" do
+        @set_or.height.must_equal 1
+        @set_or_soft.height.must_equal 1
+      end
+
       it "should return a fuzzy-set" do
         FuzzyLogic::Generate.or(@seta, @setb).must_be :is_a?, FuzzyLogic::Set
       end
@@ -116,6 +121,41 @@ describe FuzzyLogic::Generate do
       it "can handle a soft mode" do
         @set_or_soft.get(35).must_be :>, 0.5
         @set_or_soft.get(35).must_equal 0.75
+      end
+    end
+
+    describe "and-combination" do
+      before do
+        @set_and = FuzzyLogic::Generate.and(@seta, @setb)
+        @set_and_soft = FuzzyLogic::Generate.and(@seta, @setb, true)
+      end
+
+      it "should raise an ArgumentError on Arguments, which are not a Set" do
+        lambda { FuzzyLogic::Generate.and(@seta, 1) }.must_raise ArgumentError
+        lambda { FuzzyLogic::Generate.and(:test, @setb) }.must_raise ArgumentError
+      end
+
+      it "should return a fuzzy-set" do
+        FuzzyLogic::Generate.and(@seta, @setb).must_be :is_a?, FuzzyLogic::Set
+      end
+
+      it "should have values with 0.5/0.25" do
+        @set_and.get(35).must_equal 0.5
+        @set_and_soft.get(35).must_equal 0.25
+      end
+
+      it "should have values with 0" do
+        [20,30,40,50].each { |i|
+          @set_and.get(i).must_equal 0
+          @set_and_soft.get(i).must_equal 0
+        }
+      end
+
+      it "should have values between 0 and 0.5" do
+        (31..39).to_a.each { |i|
+          @set_and.get(i).must_be :>, 0
+          @set_and.get(i).must_be :<=, 0.5
+        }
       end
     end
   end

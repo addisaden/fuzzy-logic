@@ -85,6 +85,20 @@ module FuzzyLogic
       }
     end
 
+    def self.and(seta, setb, soft=false)
+      raise ArgumentError, "Arguments should be fuzzy-sets" unless seta.is_a? Set and setb.is_a? Set
+
+      if soft then
+        return Set.new { |n|
+          seta.get(n) * setb.get(n)
+        }
+      end
+
+      return Set.new { |n|
+        [seta.get(n), setb.get(n)].min
+      }
+    end
+
     private
 
     def self.args_test_array_filled_with_arrays_length(args, msg, len)
