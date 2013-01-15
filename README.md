@@ -21,7 +21,28 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### A simple Fuzzy-Set
+
+    require 'fuzzy-logic'
+
+    its_near_christmas = FuzzyLogic::Set.new(1) { |time|
+      # default output is zero
+      o = 0.0
+      
+      # time has to be in december before or at the 24th
+      if time.month == 12 and time.day <= 24 then
+        # set is completly true when its 20th december or above
+        o = 1.0 if time.day >= 20
+
+        # set is fuzzy when its between 6th and 19th
+        o = 1.0 - (24.0 - time.day)/(24.0 - 6.0) if time.day >= 6 and time.day < 20.0
+      end
+
+      # just the correct return
+      o
+    }
+    
+    its_near_christmas.get( Time.now )
 
 ## Contributing
 
