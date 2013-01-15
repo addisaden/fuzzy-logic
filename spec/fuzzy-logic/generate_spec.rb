@@ -158,5 +158,25 @@ describe FuzzyLogic::Generate do
         }
       end
     end
+
+    describe "not-combination" do
+      before do
+        @set_not = FuzzyLogic::Generate.not(@seta)
+      end
+
+      it "should raise an ArgumentError when argument is not a Set" do
+        lambda { FuzzyLogic::Generate.not(1) }.must_raise ArgumentError
+      end
+
+      it "should return a fuzzy-set" do
+        FuzzyLogic::Generate.not(@seta).must_be :is_a?, FuzzyLogic::Set
+      end
+
+      it "should be the oposite (1-val)" do
+        (0..100).to_a.each { |i|
+          @set_not.get(i).must_equal (1 - @seta.get(i))
+        }
+      end
+    end
   end
 end

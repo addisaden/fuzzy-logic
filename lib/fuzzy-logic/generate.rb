@@ -99,6 +99,14 @@ module FuzzyLogic
       }
     end
 
+    def self.not(seta)
+      raise ArgumentError, "Argument should be a fuzzy-set" unless seta.is_a? Set
+
+      return Set.new { |n|
+        1 - seta.get(n)
+      }
+    end
+
     private
 
     def self.args_test_array_filled_with_arrays_length(args, msg, len)
