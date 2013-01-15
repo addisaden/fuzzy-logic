@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = FuzzyLogic::VERSION
   gem.authors       = ["Adrian E."]
   gem.email         = ["ae@writedown.eu"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{fuzzy-logic and fuzzy-rules are really handy for some problems.}
+  gem.summary       = %q{brings fuzzy-logic and fuzzy-rules to ruby}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
