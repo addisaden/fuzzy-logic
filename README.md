@@ -5,6 +5,18 @@ An element of a fuzzy-set belongs to it in a range between zero and one.
 
 read my [work](http://writedown.eu/wp-content/uploads/2013/01/fuzzy-logik_fuzzy-regeln.pdf) on this topic in german.
 
+## Bug
+    weather = FuzzyLogic::Collection.new("weather in °C") { |n| n.is_a? Numeric }
+    weather[:cold] = FuzzyLogic::Set.new { |n|
+        o = 0.0
+        o = 1.0 if n < 5
+        o = (n - 5.0)/(15.0 - 5.0)
+        o
+    }
+    weather[:cold] # should return the Fuzzy-Set
+    
+    # the method [] is missing ...
+
 ## Installation
 
 Add this line to your application's Gemfile:
