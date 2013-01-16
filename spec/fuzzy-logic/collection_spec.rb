@@ -43,6 +43,11 @@ describe FuzzyLogic::Collection do
       @collection.get(25).wont_be_empty
       @collection.get(0, true).wont_be_empty
     end
+    
+    it "should return a fuzzy-set on hash-indexing or nil if its not presence" do
+      @collection[:test].must_be :is_a?, FuzzyLogic::Set
+      @collection[:i_am_an_invalid_key].must_be_nil
+    end
 
     it "should be empty on 0" do
       @collection.get(0).must_be_empty

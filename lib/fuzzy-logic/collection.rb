@@ -20,6 +20,10 @@ module FuzzyLogic
       @sets[fuzzysetname.to_sym] = fuzzyset
     end
 
+    def [](fuzzysetname)
+      @sets[fuzzysetname.to_sym]
+    end
+
     def get(n, all=false)
       raise TypeError, "Test of Fuzzy-Collection is not valid" unless [true, false].include? @test.call(n)
       raise ArgumentError, "Argument is not valid" unless @test.call(n)
