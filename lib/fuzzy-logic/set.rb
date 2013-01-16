@@ -40,5 +40,17 @@ module FuzzyLogic
 
       return out
     end
+
+    def and(other)
+      FuzzyLogic::Generate.and(self, other)
+    end
+
+    def or(other)
+      FuzzyLogic::Generate.or(self, other)
+    end
+
+    def not
+      FuzzyLogic::Generate.not(self)
+    end
   end
 end

@@ -12,6 +12,10 @@ describe FuzzyLogic::Set do
       o
     }
 
+    @another_valid_set = FuzzyLogic::Set.new(1) { |n|
+      n > 10 ? 0.0 : 1.0
+    }
+
     @invalid_set = FuzzyLogic::Set.new(1) { |n|
       "i am invalid."
     }
@@ -133,6 +137,30 @@ describe FuzzyLogic::Set do
     it "shouldnt have a problem with an optional alphacut" do
       @valid_set.core(30, 0.5).must_equal true
       @valid_set.core(29, 0.5).must_equal false
+    end
+  end
+
+  describe "add_helpers to every set" do
+    it "should have a helper for and generator" do
+      (0..40).to_a.each { |i|
+        @valid_set.and(@another_valid_set).get(i).must_equal FuzzyLogic::Generate.and(@valid_set, @another_valid_set).get(i)
+      }
+    end
+    it "should have a helper for or generator" do
+      (0..40).to_a.each { |i|
+        @valid_set.or(@another_valid_set).get(i).must_equal FuzzyLogic::Generate.or(@valid_set, @another_valid_set).get(i)
+      }
+    end
+    it "should have a helper for not generator" do
+      (0..40).to_a.each { |i|
+        @valid_set.not.get(i).must_equal FuzzyLogic::Generate.not(@valid_set).get(i)
+      }
+    end
+    it "can combined together" do
+      test_set = FuzzyLogic::Generate.and(FuzzyLogic::Generate.not(@valid_set), FuzzyLogic::Generate.not(@another_valid_set))
+      (0..40).to_a.each { |i|
+        @valid_set.not.and(@another_valid_set.not).get(i).must_equal test_set.get(i)
+      }
     end
   end
 end
